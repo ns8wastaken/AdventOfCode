@@ -1,5 +1,6 @@
 from common.base_solution import BaseSolution
 from utils.vector2 import Vec2
+from collections import defaultdict
 
 
 class Solution(BaseSolution):
@@ -21,65 +22,55 @@ class Solution(BaseSolution):
         locs = set()
 
         for c, coords in usedChars.items():
-            for i in coords:
-                for j in coords:
-                    if i == j: continue
+            for i in range(len(coords)):
+                for j in range(i + 1, len(coords)):
+                    vi, vj = coords[i], coords[j]
+                    v = vj - vi
 
-                    v = j - i
+                    v = vj - vi
 
-                    l1 = j + v
+                    l1 = vj + v
                     if 0 <= l1.x < width and 0 <= l1.y < height:
                         locs.add(l1)
 
-                    l2 = i - v
+                    l2 = vi - v
                     if 0 <= l2.x < width and 0 <= l2.y < height:
                         locs.add(l2)
 
         return len(locs)
 
     def Part2(self) -> int:
-        d = "............\n........0...\n.....0......\n.......0....\n....0.......\n......A.....\n............\n............\n........A...\n.........A..\n............\n............"
-        data = [list(i) for i in self.dataRaw.split("\n")]
+        data = [list(row) for row in self.dataRaw.split("\n")]
+        width, height = len(data[0]), len(data)
 
-        width  = len(data[0])
-        height = len(data)
-
-        usedChars = dict()
-
+        usedChars: dict[str, list[Vec2]] = defaultdict(list)
         for y in range(height):
             for x in range(width):
                 c = data[y][x]
-                if c != "." and c != "\n":
-                    usedChars.setdefault(c, [])
+                if c not in (".", "\n"):
                     usedChars[c].append(Vec2(x, y))
 
         locs = set()
 
         for c, coords in usedChars.items():
-            for i in coords:
-                for j in coords:
-                    if i == j: continue
+            n = len(coords)
+            if n < 2:
+                continue
 
-                    v = j - i
+            for i in range(n):
+                for j in range(i + 1, n):
+                    vi, vj = coords[i], coords[j]
+                    v = vj - vi
 
-                    idx = 1
-                    l1 = j + v
-                    while 0 <= l1.x < width and 0 <= l1.y < height:
-                        locs.add(l1)
-                        idx += 1
-                        l1 = j + v * idx
+                    locs.add(vi)
+                    locs.add(vj)
 
-                    if idx > 1:
-                        locs.add(i)
-
-                    idx = 1
-                    l2 = j + v
-                    while 0 <= l2.x < width and 0 <= l2.y < height:
-                        locs.add(l2)
-                        idx += 1
-                        l2 = j + v * idx
-
-                    if idx > 1:
-                        locs.add(i)
+                    for direction in (-1, 1):
+                        idx = 1
+                        current = vj + v * direction
+                        while 0 <= current.x < width and 0 <= current.y < height:
+                            locs.add(current)
+                            idx += 1
+                            current = vj + v * direction * idx
 
         return len(locs)
