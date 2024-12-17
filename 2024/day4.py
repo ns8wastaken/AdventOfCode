@@ -1,7 +1,7 @@
 from common.base_solution import BaseSolution
 
 class Solution(BaseSolution):
-    def Part1(self) -> int:
+    def Part1(self) -> BaseSolution.ResultType:
         data = [i.strip() for i in self.dataRaw.split("\n")]
 
         total = 0
@@ -33,7 +33,7 @@ class Solution(BaseSolution):
 
         return total
 
-    def Part2(self) -> int:
+    def Part2(self) -> BaseSolution.ResultType:
         data = [i.strip() for i in self.dataRaw.split("\n")]
 
         total = 0

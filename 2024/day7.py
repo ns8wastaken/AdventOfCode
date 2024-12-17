@@ -2,7 +2,7 @@ from common.base_solution import BaseSolution
 import itertools as it
 
 class Solution(BaseSolution):
-    def Part1(self) -> int:
+    def Part1(self) -> BaseSolution.ResultType:
         parsedData = [(int(line[:(i := line.find(":"))]), list(map(int, line[i+2:].strip().split(" ")))) for line in self.dataRaw.split("\n")]
 
         operators = ["+",  "*"]
@@ -24,7 +24,7 @@ class Solution(BaseSolution):
 
         return total
 
-    def Part2(self) -> int:
+    def Part2(self) -> BaseSolution.ResultType:
         parsedData = [(int(line[:(i := line.find(":"))]), list(map(int, line[i+2:].strip().split(" ")))) for line in self.dataRaw.split("\n")]
 
         operators = ["+",  "*", "|"]

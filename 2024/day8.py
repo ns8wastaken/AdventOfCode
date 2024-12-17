@@ -4,7 +4,7 @@ from collections import defaultdict
 
 
 class Solution(BaseSolution):
-    def Part1(self) -> int:
+    def Part1(self) -> BaseSolution.ResultType:
         data = [list(i) for i in self.dataRaw.split("\n")]
 
         width  = len(data[0])
@@ -39,7 +39,7 @@ class Solution(BaseSolution):
 
         return len(locs)
 
-    def Part2(self) -> int:
+    def Part2(self) -> BaseSolution.ResultType:
         data = [list(row) for row in self.dataRaw.split("\n")]
         width, height = len(data[0]), len(data)
 

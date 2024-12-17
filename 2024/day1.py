@@ -1,7 +1,7 @@
 from common.base_solution import BaseSolution
 
 class Solution(BaseSolution):
-    def Part1(self) -> int:
+    def Part1(self) -> BaseSolution.ResultType:
         l1 = []
         l2 = []
 
@@ -19,7 +19,7 @@ class Solution(BaseSolution):
 
         return total
 
-    def Part2(self) -> int:
+    def Part2(self) -> BaseSolution.ResultType:
         l1 = set()
         l2 = []
 

@@ -2,7 +2,7 @@ from common.base_solution import BaseSolution
 import re
 
 class Solution(BaseSolution):
-    def Part1(self) -> int:
+    def Part1(self) -> BaseSolution.ResultType:
         total = 0
 
         for match in re.findall(r"mul\(\d+,\d+\)", self.dataRaw):
@@ -11,7 +11,7 @@ class Solution(BaseSolution):
 
         return total
 
-    def Part2(self) -> int:
+    def Part2(self) -> BaseSolution.ResultType:
         total = 0
 
         do = True

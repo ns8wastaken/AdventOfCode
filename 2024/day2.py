@@ -18,7 +18,7 @@ def isSafe(l: list[int]) -> bool:
 
 
 class Solution(BaseSolution):
-    def Part1(self) -> int:
+    def Part1(self) -> BaseSolution.ResultType:
         total = 0
 
         for line in self.dataRaw.split("\n"):
@@ -26,7 +26,7 @@ class Solution(BaseSolution):
 
         return total
 
-    def Part2(self) -> int:
+    def Part2(self) -> BaseSolution.ResultType:
         total = 0
 
         for line in self.dataRaw.split("\n"):
