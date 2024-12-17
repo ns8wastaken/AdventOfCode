@@ -36,10 +36,11 @@ if __name__ == "__main__":
         filePath = Path(__file__).parent / str(args.year) / file
 
         day = int(filePath.name.split(".")[0][3:])
-
-        print(f"Results for year {args.year}, day {day}:")
-
         solution = __import__(f"{args.year}.day{day}", fromlist=["Solution"]).Solution(args.year, day, sessionKey)
-        print("Part 1:", solution.Part1())
-        print("Part 2:", solution.Part2())
-        print()
+
+        print("-" * 79)
+        print(f"Results for year {args.year}, day {str(day).rjust(2, "0")} | Part 1: {str(solution.Part1()).rjust(14)} | Part 2: {str(solution.Part2()).rjust(14)}")
+
+    print()
+    print("-" * 79)
+    print()

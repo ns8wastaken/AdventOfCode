@@ -14,20 +14,82 @@ class Vec2:
             return NotImplemented
         return (self.x == other.x) and (self.y == other.y)
 
-    def __add__(self, other: "Vec2") -> "Vec2":
-        return Vec2(self.x + other.x, self.y + other.y)
+    def __add__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            return Vec2(self.x + other.x, self.y + other.y)
+        else:
+            return Vec2(self.x + other, self.y + other)
 
-    def __iadd__(self, other: "Vec2") -> "Vec2":
-        return Vec2(self.x + other.x, self.y + other.y)
+    def __iadd__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            self.x += other.x
+            self.y += other.y
+        else:
+            self.x += other
+            self.y += other
 
-    def __sub__(self, other: "Vec2") -> "Vec2":
-        return Vec2(self.x - other.x, self.y - other.y)
+        return self
 
-    def __isub__(self, other: "Vec2") -> "Vec2":
-        return Vec2(self.x - other.x, self.y - other.y)
+    def __sub__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            return Vec2(self.x - other.x, self.y - other.y)
+        else:
+            return Vec2(self.x - other, self.y - other)
+
+    def __isub__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            self.x -= other.x
+            self.y -= other.y
+        else:
+            self.x -= other
+            self.y -= other
+
+        return self
 
     def __mul__(self, other: "Vec2 | float") -> "Vec2":
         if isinstance(other, Vec2):
             return Vec2(self.x * other.x, self.y * other.y)
         else:
             return Vec2(self.x * other, self.y * other)
+
+    def __imul__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            self.x *= other.x
+            self.y *= other.y
+        else:
+            self.x *= other
+            self.y *= other
+
+        return self
+
+    def __truediv__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            return Vec2(self.x / other.x, self.y / other.y)
+        else:
+            return Vec2(self.x / other, self.y / other)
+
+    def __itruediv__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            self.x /= other.x
+            self.y /= other.y
+        else:
+            self.x /= other
+            self.y /= other
+
+        return self
+
+    def __floordiv__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            return Vec2(self.x // other.x, self.y // other.y)
+        else:
+            return Vec2(self.x // other, self.y // other)
+
+    def __ifloordiv__(self, other: "Vec2 | float") -> "Vec2":
+        if isinstance(other, Vec2):
+            self.x //= other.x
+            self.y //= other.y
+        else:
+            self.x //= other
+            self.y //= other
+
+        return self
