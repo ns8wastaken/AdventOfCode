@@ -14,4 +14,18 @@ if __name__ == "__main__":
 
     if os.path.exists(filePath) == False:
         with open(filePath, "w") as f:
-            f.write("from common.base_solution import BaseSolution\n\nclass Solution(BaseSolution):\n    def Part1(self) -> BaseSolution.ResultType:\n        pass\n\n    def Part2(self) -> BaseSolution.ResultType:\n        pass\n")
+            f.write("""\
+from common.base_solution import BaseSolution
+
+class Solution(BaseSolution):
+    def Part1(self) -> BaseSolution.ResultType:
+        pass
+
+    def Part2(self) -> BaseSolution.ResultType:
+        pass
+""")
+
+        print(f"Created {filePath}")
+
+    else:
+        print(f"{filePath} already exists")

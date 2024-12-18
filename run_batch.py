@@ -32,15 +32,18 @@ if __name__ == "__main__":
             f.write(args.session)
         sessionKey = args.session
 
-    for file in [i for i in os.listdir(str(args.year)) if i.endswith(".py")]:
-        filePath = Path(__file__).parent / str(args.year) / file
+    print(f"┼{"─" * 17}┼{"─" * 28}┼{"─" * 27}┼")
+    print(f"│      Year       │    Results for part 1      │    Results for part 2     │")
+
+    baseFilePath = Path(__file__).parent / str(args.year)
+    for file in sorted([i for i in os.listdir(baseFilePath) if i.endswith(".py")], key=lambda i: int(i.split(".")[0][3:])):
+        filePath = baseFilePath / file
 
         day = int(filePath.name.split(".")[0][3:])
         solution = __import__(f"{args.year}.day{day}", fromlist=["Solution"]).Solution(args.year, day, sessionKey)
 
-        print("-" * 79)
-        print(f"Results for year {args.year}, day {str(day).rjust(2, "0")} | Part 1: {str(solution.Part1()).rjust(14)} | Part 2: {str(solution.Part2()).rjust(14)}")
+        print(f"┼{"─" * 17}┼{"─" * 28}┼{"─" * 27}┼")
+        print(f"│Year {args.year} Day {str(day).rjust(2, "0")} │ Part 1: {str(solution.Part1()).rjust(18)} │ Part 2: {str(solution.Part2()).rjust(18)}│")
 
-    print()
-    print("-" * 79)
+    print(f"┼{"─" * 17}┼{"─" * 28}┼{"─" * 27}┼")
     print()
