@@ -3,6 +3,9 @@ class IVec2:
         self.x = x
         self.y = y
 
+    def copy(self):
+        return IVec2(self.x, self.y)
+
     def __iter__(self):
         yield self.x
         yield self.y
@@ -97,3 +100,6 @@ class IVec2:
             self.y //= other
 
         return self
+
+    def __neg__(self):
+        return IVec2(-self.x, -self.y)

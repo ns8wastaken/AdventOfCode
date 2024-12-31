@@ -1,7 +1,6 @@
 from abc import abstractmethod
 from typing import Union
 import requests
-import time
 
 class BaseSolution:
     ResultType = Union[int, str, None]

@@ -27,7 +27,7 @@ if __name__ == "__main__":
                 sessionKey = f.read().strip()
 
         else:
-            raise RuntimeError("There is no session_key.txt file and the session key was not provided")
+            raise RuntimeError("There is no session_key.txt file and the session key was not provided, use the --session argument to provide the key")
 
     else:
         with open(sessionKeyFilePath, "w") as f:

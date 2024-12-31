@@ -36,4 +36,4 @@ class Solution(BaseSolution):
         return total
 
     def Part2(self) -> BaseSolution.ResultType:
-        pass
+        return NotImplemented
