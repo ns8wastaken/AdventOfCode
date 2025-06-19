@@ -27,10 +27,15 @@ if __name__ == "__main__":
                 sessionKey = f.read().strip()
 
         else:
+            print("How to find your session key (on firefox at least):\n\
+            1) Go to any advent of code problem page such as https://adventofcode.com/2021/day/1\n\
+            2) Inspect element -> Storage tab -> Cookies\n\
+            3) Get the value of the \"session\" key and paste it after the --session argument in the commandline\n\
+            THE SESSION KEY WILL BE SAVED IN \"session_key.txt\" WHENEVER IT IS PROVIDED")
             raise RuntimeError("There is no session_key.txt file and the session key was not provided, use the --session argument to provide the key")
 
     else:
-        with open(sessionKeyFilePath, "w") as f:
+        with open(sessionKeyFilePath, 'w') as f:
             f.write(args.session)
         sessionKey = args.session
 
