@@ -3,7 +3,7 @@ from typing import Union
 import requests
 
 class BaseSolution:
-    ResultType = Union[int, str, None]
+    ResultType = Union[int, str]
 
     def __init__(self, year: int, day: int, sessionKey: str):
         url = f"https://adventofcode.com/{year}/day/{day}/input"
@@ -18,9 +18,9 @@ class BaseSolution:
     @abstractmethod
     def Part1(self) -> ResultType:
         """Solve Part 1 of the problem."""
-        pass
+        return NotImplemented
 
     @abstractmethod
     def Part2(self) -> ResultType:
         """Solve Part 2 of the problem."""
-        pass
+        return NotImplemented

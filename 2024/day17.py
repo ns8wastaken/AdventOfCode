@@ -123,4 +123,4 @@ class Solution(BaseSolution):
         #     computer.regs.a //= 8
         #     computer.output.append(computer.regs.b & 7)
 
-        return None
+        return NotImplemented
