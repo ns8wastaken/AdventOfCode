@@ -40,7 +40,7 @@ if __name__ == "__main__":
         filePath = baseFilePath / file
 
         day = int(filePath.name.split(".")[0][3:])
-        solution = __import__(f"{args.year}.day{day}", fromlist=["Solution"]).Solution(args.year, day, sessionKey)
+        solution = __import__(f"{args.year}.day{day:>02}", fromlist=["Solution"]).Solution(args.year, day, sessionKey)
 
         print(f"┼{"─" * 17}┼{"─" * 28}┼{"─" * 27}┼")
         print(f"│Year {args.year} Day {str(day).rjust(2, "0")} │ Part 1: {str(solution.Part1()).rjust(18)} │ Part 2: {str(solution.Part2()).rjust(18)}│")

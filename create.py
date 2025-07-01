@@ -10,7 +10,12 @@ PARSER.add_argument("--day",  "-D", type=int, help="Puzzle day",  required=True)
 if __name__ == "__main__":
     args = PARSER.parse_args()
 
-    filePath = Path(__file__).parent / f"{args.year}/day{args.day}.py"
+    rootDir = Path(__file__).parent
+    yearPath = (rootDir / f"{args.year}").resolve()
+    filePath = (rootDir / f"{args.year}/day{args.day:>02}.py").resolve()
+
+    if os.path.exists(yearPath) == False:
+        os.mkdir(yearPath)
 
     if os.path.exists(filePath) == False:
         with open(filePath, "w") as f:

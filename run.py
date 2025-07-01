@@ -39,6 +39,6 @@ if __name__ == "__main__":
             f.write(args.session)
         sessionKey = args.session
 
-    solution = __import__(f"{args.year}.day{args.day}", fromlist=["Solution"]).Solution(args.year, args.day, sessionKey)
+    solution = __import__(f"{args.year}.day{args.day:>02}", fromlist=["Solution"]).Solution(args.year, args.day, sessionKey)
     print("Part 1:", solution.Part1())
     print("Part 2:", solution.Part2())

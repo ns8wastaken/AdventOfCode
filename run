@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Check if two arguments are given
+if [ "$#" -ne 2 ]; then
+    echo "Usage: ./create <year> <day>"
+    exit 1
+fi
+
+python run.py -Y "$1" -D "$2"

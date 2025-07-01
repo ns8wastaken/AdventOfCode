@@ -1,6 +1,6 @@
 from collections import deque
 
-def BFSPath(
+def BFSMaze(
     mazeSize: tuple[int, int],
     walls:    set[tuple[int, int]],
     start:    tuple[int, int],
@@ -10,9 +10,8 @@ def BFSPath(
     visited: dict[tuple[int, int], tuple[int, int] | None] = { start: None }
     queue = deque([start])
 
-    isInMaze = lambda pos: (0 <= pos[0] < mazeSize[0]) and (0 <= pos[1] < mazeSize[1])
+    isInMaze = lambda pos: (0 <= pos[0] < (mazeSize[0] - 1)) and (0 <= pos[1] < (mazeSize[1] - 1))
 
-    # BFS
     if orthogonalNeighbors:
         dirs = ((0, 1), (0, -1), (1, 0), (-1, 0))
     else:

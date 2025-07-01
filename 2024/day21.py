@@ -1,7 +1,6 @@
 from common.base_solution import BaseSolution
-from utils.bfs_path import BFSPath
+from utils.bfs_path import BFSMaze
 import regex as re
-import itertools
 
 NUMPAD = [
     ('7', (0, 0)), ('8', (1, 0)), ('9', (2, 0)),
@@ -28,7 +27,7 @@ def getAllPaths(
     paths: dict[tuple[str, str], str] = dict()
     for start, startCoords in stuff:
         for end, endCoords in stuff:
-            path = BFSPath(size, walls, startCoords, endCoords)
+            path = BFSMaze(size, walls, startCoords, endCoords)
             command = ""
 
             for i in range(len(path) - 1):

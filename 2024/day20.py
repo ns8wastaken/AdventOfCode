@@ -1,5 +1,5 @@
 from common.base_solution import BaseSolution
-from utils.bfs_path import BFSPath
+from utils.bfs_path import BFSMaze
 
 
 class Solution(BaseSolution):
@@ -35,11 +35,11 @@ class Solution(BaseSolution):
 
         t = 0
 
-        base = len(BFSPath(walls, start, end)[1:])
+        base = len(BFSMaze(walls, start, end)[1:])
         for w in walls:
             walls2 = walls.copy()
             walls2.remove(w)
-            path = BFSPath(walls2, start, end)[1:]
+            path = BFSMaze(walls2, start, end)[1:]
 
             if base - len(path) >= 100:
                 t += 1

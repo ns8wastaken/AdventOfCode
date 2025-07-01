@@ -1,5 +1,5 @@
 from common.base_solution import BaseSolution
-from utils.bfs_path import BFSPath
+from utils.bfs_path import BFSMaze
 
 class Solution(BaseSolution):
     def Part1(self) -> BaseSolution.ResultType:
@@ -10,7 +10,7 @@ class Solution(BaseSolution):
             x, y = lines[i].split(',')
             walls.add((int(x), int(y)))
 
-        pathLen = len(BFSPath(walls, (0, 0), (70, 70)))
+        pathLen = len(BFSMaze((71, 71), walls, (0, 0), (70, 70)))
         return pathLen - 1
 
     def Part2(self) -> BaseSolution.ResultType:
@@ -23,7 +23,7 @@ class Solution(BaseSolution):
             walls.add((int(x), int(y)))
 
         n = 0
-        while BFSPath(walls, (0, 0), (70, 70)) != 0:
+        while BFSMaze((71, 71), walls, (0, 0), (70, 70)) != 0:
             x, y = lines[n].split(',')
             walls.add((int(x), int(y)))
             n += 1
