@@ -7,7 +7,9 @@ class BaseSolution:
 
     def __init__(self, year: int, day: int, sessionKey: str):
         url = f"https://adventofcode.com/{year}/day/{day}/input"
-        response = requests.get(url, cookies={"session": sessionKey})
+        response = requests.get(url, cookies = {
+            "session": sessionKey
+        })
 
         # Handle request errors
         if response.status_code != 200:
