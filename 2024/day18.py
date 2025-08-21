@@ -1,5 +1,5 @@
 from common.base_solution import BaseSolution
-from utils.bfs_path import BFSMaze
+from utils.bfs_maze import BFSMaze
 
 class Solution(BaseSolution):
     def Part1(self) -> BaseSolution.ResultType:

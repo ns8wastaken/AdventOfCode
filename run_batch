@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Check if two arguments are given
+if [ "$#" -ne 1 ]; then
+    echo "Usage: ./run_batch <year>"
+    exit 1
+fi
+
+python run_batch.py -Y "$1"
