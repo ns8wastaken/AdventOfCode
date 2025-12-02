@@ -38,42 +38,57 @@ class Solution(BaseSolution):
 
         t = 0
 
-        shortest_num_len = len(min(d.keys(), key=lambda x: len(x)))
         longest_num_len = len(max(d.keys(), key=lambda x: len(x)))
 
         for line in self.dataRaw.splitlines():
-            d1 = 0
-            d2 = 0
+            d1 = -1
 
-            for i in range(len(line) - shortest_num_len + 1):
+            for i in range(len(line)):
+                gucci = False
+
                 if line[i].isdigit():
                     d1 = int(line[i])
                     break
 
-                for j in range(longest_num_len, shortest_num_len - 1, -1):
-                    w = line[i:i+j]
-                    if w in d:
-                        d1 = d[w]
+                for j in range(i + 1, i + 1 + longest_num_len):
+                    if j > len(line):
                         break
 
-                if d1 != 0:
+                    if (n := line[i:j]) in d:
+                        d1 = d[n]
+                        gucci = True
+                        break
+
+                if gucci:
                     break
 
+            if d1 == -1:
+                raise RuntimeError("Ruh roh")
+
+            d2 = -1
+
             for i in range(len(line) - 1, -1, -1):
+                gucci = False
+
                 if line[i].isdigit():
                     d2 = int(line[i])
                     break
 
-                for j in range(longest_num_len, shortest_num_len - 1, -1):
-                    w = line[i:i+j]
-                    if w in d:
-                        d2 = d[w]
+                for j in range(i + 1, i + 1 + longest_num_len):
+                    if j > len(line):
                         break
 
-                if d2 != 0:
+                    if (n := line[i:j]) in d:
+                        d2 = d[n]
+                        gucci = True
+                        break
+
+                if gucci:
                     break
 
-            t += d1*10 + d2
+            if d2 == -1:
+                raise RuntimeError("Ruh roh")
 
-        # return t
-        return NotImplemented
+            t += int(f"{d1}{d2}")
+
+        return t

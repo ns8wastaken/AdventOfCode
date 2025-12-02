@@ -2,7 +2,7 @@
 
 # Check if two arguments are given
 if [ "$#" -ne 2 ]; then
-    echo "Usage: ./create <year> <day>"
+    echo "Usage: ./run <year> <day>"
     exit 1
 fi
 

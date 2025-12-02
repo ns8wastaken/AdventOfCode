@@ -22,10 +22,11 @@ class Solution(BaseSolution):
             x, y = lines[i].split(',')
             walls.add((int(x), int(y)))
 
-        n = 0
-        while BFSMaze((71, 71), walls, (0, 0), (70, 70)) != 0:
-            x, y = lines[n].split(',')
-            walls.add((int(x), int(y)))
-            n += 1
-
-        return lines[n - 1]
+        return NotImplemented
+        # n = 0
+        # while BFSMaze((71, 71), walls, (0, 0), (70, 70)) != 0:
+        #     x, y = lines[n].split(',')
+        #     walls.add((int(x), int(y)))
+        #     n += 1
+        #
+        # return lines[n - 1]

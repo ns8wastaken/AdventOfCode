@@ -1,5 +1,5 @@
 from common.base_solution import BaseSolution
-from utils.bfs_path import BFSMaze
+from utils.bfs_maze import BFSMaze
 
 
 class Solution(BaseSolution):
@@ -25,8 +25,10 @@ class Solution(BaseSolution):
         end = (0, 0)
 
         lines = self.dataRaw.split('\n')
-        for y in range(len(lines)):
-            for x in range(len(lines[y])):
+        height = len(lines)
+        width = len(lines[0])
+        for y in range(height):
+            for x in range(width):
                 c = lines[y][x]
                 pos = (x, y)
                 if   c == '#': walls.add(pos)
@@ -35,11 +37,11 @@ class Solution(BaseSolution):
 
         t = 0
 
-        base = len(BFSMaze(walls, start, end)[1:])
+        base = len(BFSMaze((width, height), walls, start, end)[1:])
         for w in walls:
             walls2 = walls.copy()
             walls2.remove(w)
-            path = BFSMaze(walls2, start, end)[1:]
+            path = BFSMaze((width, height), walls2, start, end)[1:]
 
             if base - len(path) >= 100:
                 t += 1
