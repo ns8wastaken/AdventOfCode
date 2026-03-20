@@ -3,6 +3,11 @@ class Vec2:
         self.x = x
         self.y = y
 
+    @classmethod
+    def from_iter(cls, iterable) -> "Vec2":
+        x, y = iterable
+        return cls(float(x), float(y))
+
     def copy(self):
         return Vec2(self.x, self.y)
 
@@ -101,5 +106,11 @@ class Vec2:
 
         return self
 
-    def __neg__(self):
+    def __neg__(self) -> "Vec2":
         return Vec2(-self.x, -self.y)
+
+    def dist(self, other: "Vec2") -> float:
+        return (
+            (self.x - other.x) ** 2
+            + (self.y - other.y) ** 2
+        ) ** 0.5

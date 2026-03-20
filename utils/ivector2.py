@@ -3,6 +3,11 @@ class IVec2:
         self.x = x
         self.y = y
 
+    @classmethod
+    def from_iter(cls, iterable) -> "IVec2":
+        x, y = iterable
+        return cls(int(x), int(y))
+
     def copy(self):
         return IVec2(self.x, self.y)
 
@@ -69,21 +74,21 @@ class IVec2:
 
         return self
 
-    def __truediv__(self, other: "IVec2 | int") -> "IVec2":
-        if isinstance(other, IVec2):
-            return IVec2(self.x // other.x, self.y // other.y)
-        else:
-            return IVec2(self.x // other, self.y // other)
-
-    def __itruediv__(self, other: "IVec2 | int") -> "IVec2":
-        if isinstance(other, IVec2):
-            self.x //= other.x
-            self.y //= other.y
-        else:
-            self.x //= other
-            self.y //= other
-
-        return self
+    # def __truediv__(self, other: "IVec2 | int") -> "IVec2":
+    #     if isinstance(other, IVec2):
+    #         return IVec2(self.x // other.x, self.y // other.y)
+    #     else:
+    #         return IVec2(self.x // other, self.y // other)
+    #
+    # def __itruediv__(self, other: "IVec2 | int") -> "IVec2":
+    #     if isinstance(other, IVec2):
+    #         self.x //= other.x
+    #         self.y //= other.y
+    #     else:
+    #         self.x //= other
+    #         self.y //= other
+    #
+    #     return self
 
     def __floordiv__(self, other: "IVec2 | int") -> "IVec2":
         if isinstance(other, IVec2):
@@ -103,3 +108,9 @@ class IVec2:
 
     def __neg__(self):
         return IVec2(-self.x, -self.y)
+
+    def dist(self, other: "IVec2") -> float:
+        return (
+            (self.x - other.x) ** 2
+            + (self.y - other.y) ** 2
+        ) ** 0.5
